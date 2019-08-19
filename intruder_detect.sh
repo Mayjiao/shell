@@ -32,10 +32,10 @@ do
     if [ $attempts -ne 0 ]
 	then
 	    first_time=`grep $ip $LOG | grep " $user " | head -1|cut -c-16`
-		if [ $attempts -gt 1 ]
+	    if [ $attempts -gt 1 ]
 		then
 		    last_time=`grep $ip $LOG | grep " $user " | tail -1 | cut -c-16`
-			time="$first_time -> $last_time"
+		    time="$first_time -> $last_time"
 		fi
 		HOST=$(host $ip 8.8.8.8 | tail -1 | awk '{print $NF}' )
 		printf "%-10s|%-3s|%-16s|%-33s|%-s\n" "$user" "$attempts" "$ip" \
