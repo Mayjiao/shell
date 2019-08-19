@@ -3,7 +3,7 @@
 
 AUTHLOG=/var/log/auth.log
 
-if [[ -n $1]];
+if [[ -n $1 ]];
 then
     AUTHLOG=$1
 	echo Using Log File:$AUTHLOG
