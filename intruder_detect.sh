@@ -6,7 +6,7 @@ AUTHLOG=/var/log/auth.log
 if [[ -n $1 ]];
 then
     AUTHLOG=$1
-	echo Using Log File:$AUTHLOG
+    echo Using Log File:$AUTHLOG
 fi
 
 #采集失败的登录记录
@@ -26,10 +26,10 @@ printf "%-10s|%-3s|%-16s|%-33s|%s\n" "User" "Attempts" "IP address" \
 for ip in $ip_list;
 do
     for user in $users;
-	do
-	#统计来自该ip的用户登录的次数
+    do
+    #统计来自该ip的用户登录的次数
     attempts=`grep $ip $LOG | grep " $user " | wc -l`
-	if [ $attempts -ne 0 ]
+    if [ $attempts -ne 0 ]
 	then
 	    first_time=`grep $ip $LOG | grep " $user " | head -1|cut -c-16`
 		if [ $attempts -gt 1 ]
@@ -40,7 +40,7 @@ do
 		HOST=$(host $ip 8.8.8.8 | tail -1 | awk '{print $NF}' )
 		printf "%-10s|%-3s|%-16s|%-33s|%-s\n" "$user" "$attempts" "$ip" \
 		"$HOST" "$time";
-	fi
+   fi
    done
 done
 rm $LOG
